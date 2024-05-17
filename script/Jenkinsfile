@@ -1,0 +1,20 @@
+pipeline {
+    agent any     #define agent and example ususally server or container
+    tools {
+        maven 'M2_HOME'
+        
+    }
+    stages {
+        stage("checkout scm"){
+            steps{
+                checkout scm
+            }
+        }
+        stage("sonacloud analysis"){
+            steps{
+                sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=HKRD4ever_geo-app'
+            }
+        }
+    }
+
+}
