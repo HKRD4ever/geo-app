@@ -1,5 +1,5 @@
 pipeline {
-    agent any     #define agent and example ususally server or container
+    agent any   
     tools {
         maven 'M2_HOME'
         
