@@ -4,7 +4,11 @@ pipeline {
     stages {
         stage('Maven Build') {
             steps {
-                sh 'mvn clean validate install test package'
+                sh '''
+                apt-get update
+                apt-get install -y maven
+                mvn clean validate install test package
+                '''
             }
         }
         stage('Create File with Date in Filename') {
