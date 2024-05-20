@@ -1,13 +1,17 @@
+#!/usr/bin/env python3
+
 import os
 
-<<<<<<< HEAD
 print("hello kenslor")
 
-os.system("date")  # Use this for Windows
-os.system("uname -r")  # This will work on Unix-like systems (Linux, macOS)
-=======
-print("hello kenslor)
+# Use this for Windows
+os.system("date")  
 
+# This will work on Unix-like systems (Linux, macOS)
+os.system("uname -r")
+
+# Print the number of processors
 os.system("nproc")
-os.system("uname-r")
->>>>>>> 64858a9dfaae3fee63052f4a1219dc534d1213d5
+
+# Print the kernel release
+os.system("uname -r")

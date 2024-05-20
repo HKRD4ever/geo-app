@@ -1,13 +1,22 @@
-pipeline(
+pipeline {
     agent any
 
-    stages{
-        stage("cmaven"){
-            steps{
+    stages {
+        stage('Maven Build') {
+            steps {
                 sh 'mvn clean validate install test package'
-                
             }
-            
+        }
+        stage('Create File with Date in Filename') {
+            steps {
+                script {
+                    // Create the file with the current date in the filename
+                    sh 'touch "file_$(date +\'%Y-%m-%d\').txt"'
+
+                    // Optionally, archive the file so it can be accessed from Jenkins UI
+                    archiveArtifacts artifacts: 'file_*.txt'
+                }
+            }
         }
     }
-)
+}
