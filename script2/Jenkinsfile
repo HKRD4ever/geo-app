@@ -22,12 +22,9 @@ pipeline {
                 }
             }
         }
-       /*  stage('upload artifact') {
+        stage('upload artifact') {
             steps {
-                sh '''
-                    curl -uadmin:AP8gcgmmset5jeYChTJYDN6XmDd -T bio*.jar \
-                    "http://ec2-107-23-107-196.compute-1.amazonaws.com:8081/artifactory/geolocation/geo/bio_${BUILD_ID}.jar"
-                '''
-        } */
+                sh 'curl -uadmin:AP8gcgmmset5jeYChTJYDN6XmDd -T get/bio*jar "http://ec2-107-23-107-196.compute-1.amazonaws.com:8081/artifactory/geolocation/geo/bio_${BUILD_ID}.jar"'
+        }
     }
 }
