@@ -9,7 +9,6 @@ pipeline {
             steps {
                 sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=HKRD4ever_geo-app'
             }
-
         }
         stage('Maven Build') {
             steps {
