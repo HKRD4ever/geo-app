@@ -5,15 +5,14 @@ pipeline {
     }
 
     stages {
-        stage('sonar-scan'){
+        stage('sonar-scan') {
             steps {
                 sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=HKRD4ever_geo-app'
             }
         }
         stage('Maven Build') {
             steps {
-                /* sh 'mvn clean validate compile install test package' */
-                sh 'mvn lean'
+                sh 'mvn clean'
                 sh 'mvn validate'
                 sh 'mvn compile'
                 sh 'mvn install'
