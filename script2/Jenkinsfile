@@ -7,7 +7,10 @@ pipeline {
     stages {
         stage('sonar-scan') {
             steps {
-                sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=HKRD4ever_geo-app'
+                withSonarQubeEnv('sonarQube_server1') {
+                    sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=HKRD4ever_geo-app'
+                }
+                
             }
         }
         stage('Maven Build') {
@@ -33,7 +36,7 @@ pipeline {
         }
         stage('Upload Artifact') {
             steps {
-                sh 'curl -uadmin:AP8gcgmmset5jeYChTJYDN6XmDd -T target/bio*.jar "http://ec2-107-23-107-196.compute-1.amazonaws.com:8081/artifactory/geolocation/geo/bio_${BUILD_ID}.jar"'
+                sh 'curl -uadmin:AP8gcgmmset5jeYChTJYDN6XmDd -T http://ec2-3-83-253-9.compute-1.amazonaws.com:8081/artifactory/geolocation/geo/bio_${BUILD_ID}.jar"'                 
             }
         }
     }
